@@ -1,0 +1,12 @@
+#set_io PLL_output 23
+set_io clk 20
+
+#set_io RGB[0] 28
+#set_io RGB[1] 38
+#set_io RGB[2] 42
+#set_io RGB[3] 36
+#set_io RGB[4] 43
+#set_io RGB[5] 34
+
+#set_io HSYNC 2
+#set_io VSYNC 46

@@ -1,0 +1,13 @@
+v 4
+file . "vga.vhdl" "ca0b27842d702f1c7e196984205a35ef21f2f7a9" "20221116211342.705":
+  entity vga at 1( 0) + 0 on 17;
+  architecture synth of vga at 18( 314) + 0 on 18;
+file . "pll.vhdl" "b203e2c3f4da46ad5f764adb61f0356cb47cb665" "20221116211342.598":
+  entity pll at 1( 0) + 0 on 13;
+  architecture synth of pll at 14( 247) + 0 on 14;
+file . "pattern_gen.vhdl" "8f253102fcf75f48fa834eb86592fb2d1c137715" "20221116211342.535":
+  entity pattern_gen at 1( 0) + 0 on 11;
+  architecture synth of pattern_gen at 14( 283) + 0 on 12;
+file . "top.vhdl" "fba771ef3936812e7781563426a69de8d756d0d5" "20221116211342.649":
+  entity top at 1( 0) + 0 on 15;
+  architecture synth of top at 15( 285) + 0 on 16;
