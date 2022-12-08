@@ -27,7 +27,7 @@ clean:
 
 simulate:
 	@echo -en "$(BLUEBOLD)==== Simulating...   ====$(NC)\n"
-	$(GHDL) -a --std=08 *.$(VHDL_EXT) $(ERR_STREAM)
+	$(GHDL) -a -fsynopsys --std=08 *.$(VHDL_EXT) $(ERR_STREAM)
 
 synth: # Synthesize the design
 	@echo -en "$(BLUEBOLD)==== Synthesizing... ====$(NC)\n"

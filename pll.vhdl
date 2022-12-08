@@ -6,7 +6,7 @@ entity pll is
     port (
         clk_in : in std_logic;
         clk_out : out std_logic;
-        clk_locked : out std_logic;
+        --clk_locked : out std_logic;
         PLL_output : out std_logic
     );
 end pll;
@@ -98,7 +98,7 @@ architecture synth of pll is
 
         );
         port (
-            LOCK : out std_logic;
+            --LOCK : out std_logic;
             RESETB : in std_logic;
             BYPASS : in std_logic;
             REFERENCECLK : in std_logic;
@@ -110,7 +110,7 @@ architecture synth of pll is
 begin
 
     dut1 : SB_PLL40_CORE port map (
-        LOCK => clk_locked,
+        --LOCK => clk_locked,
         RESETB => '1',
         BYPASS => '0',
         REFERENCECLK => clk_in,
