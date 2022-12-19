@@ -37,24 +37,24 @@ architecture synth of top is
             valid : in std_logic;
             row : in unsigned(9 downto 0);                        --changed range of values
             col : in unsigned(9 downto 0);                        --changed range of values
-		frame_data : in std_logic_vector(767 downto 0);         -- sig partner gen 
+		    frame_data : in std_logic_vector(767 downto 0);         -- sig partner gen 
             RGB : out std_logic_vector(5 downto 0)                  --rgb value still 6 bits
         );
     end component;
 
     component rom is
-        port (
-            clk : in std_logic;
-            addr : in std_logic_vector(10 downto 0);
-            data : out std_logic_vector(767 downto 0)
-        );
+       port (
+           clk : in std_logic;
+           addr : in std_logic_vector(7 downto 0);
+           data : out std_logic_vector(767 downto 0)
+       );
     end component;
 
     component scale_clock is
         port (
             clk_12Mhz : in std_logic;
             rst : in std_logic;
-            clk_10Hz : out std_logic
+            clk_outHz : out std_logic
         );
     end component;
 
@@ -64,9 +64,9 @@ architecture synth of top is
     signal valid : std_logic;
     signal clk : std_logic;
     signal frame : std_logic_vector(767 downto 0);
-    signal addr : std_logic_vector(10 downto 0);
+    signal addr : std_logic_vector(7 downto 0);
     signal frame_clk : std_logic;
-    
+
 begin
     rst <= '0';
     mypll : pll port map (
@@ -87,15 +87,15 @@ begin
     frame_clock_gen : scale_clock port map (
         clk_12Mhz => clk_in,
         rst => rst,
-        clk_10Hz => frame_clk
+        clk_outHz => frame_clk
     );
 
     process (frame_clk) is
     begin
         if rising_edge(frame_clk) then
             addr <= std_logic_vector(unsigned(addr) + 1);
-            if addr = 11d"1248" then
-                addr <= 11b"0";
+            if addr = 8d"151" then
+                addr <= 8b"0";
             end if;
         end if;
     end process;

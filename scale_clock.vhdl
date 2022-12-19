@@ -9,30 +9,30 @@ entity scale_clock is
   port (
     clk_12Mhz : in  std_logic;
     rst       : in  std_logic;
-    clk_10Hz   : out std_logic);
+    clk_outHz   : out std_logic);
 end scale_clock;
 
 architecture Behavioral of scale_clock is
 
   signal prescaler : unsigned(23 downto 0);
-  signal clk_10Hz_i : std_logic;
+  signal clk_outHz_i : std_logic;
 begin
 
   gen_clk : process (clk_12Mhz, rst)
   begin  -- process gen_clk
     if rst = '1' then
-      clk_10Hz_i   <= '0';
+      clk_outHz_i   <= '0';
       prescaler   <= (others => '0');
     elsif rising_edge(clk_12Mhz) then   -- rising clock edge
-      if prescaler = X"124F80" then     -- 1 200 000 in hex
+      if prescaler = X"B71B0" then     -- 1 200 000 in hex
         prescaler   <= (others => '0');
-        clk_10Hz_i   <= not clk_10Hz_i;
+        clk_outHz_i   <= not clk_outHz_i;
       else
         prescaler <= prescaler + "1";
       end if;
     end if;
   end process gen_clk;
 
-clk_10Hz <= clk_10Hz_i;
+clk_outHz <= clk_outHz_i;
 
 end Behavioral;

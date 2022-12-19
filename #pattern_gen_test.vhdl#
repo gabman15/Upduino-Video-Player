@@ -1,0 +1,36 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+u
+entity pattern_gen_test is
+end entity;
+
+architecture dataflow of pattern_gen_test is
+component pattern_gen is
+    port(
+        valid : in std_logic;
+        row,col : in unsigned(9 downto 0);
+        frame_data : in std_logic_vector(767 downto 0);
+        RGB : out std_logic_vector(5 downto 0)
+    );
+end component;
+
+signal valid_test : std_logic;
+signal row_test, col_test : unsigned(9 downto 0);
+signal frame_data_test : std_logic_vector(767 downto 0);
+signal RGB_test : std_logic_vector(5 downto 0);
+
+begin
+
+dut : adder_ff port map(
+a =>a,
+b =>b,
+cin => cin,
+sum =>sum,
+carry => carry);
+
+a <= '0', '1' after 80 ns;
+b <= '0', '1' after 40 ns, '0' after 80 ns, '1' after 120 ns;
+cin <= '0', '1' after 20 ns, '0' after 40 ns, '1' after 60 ns, '0' after 80 ns, '1' after 100 ns,
+       '0' after 120 ns, '1' after 140 ns;
+
+end dataflow;
